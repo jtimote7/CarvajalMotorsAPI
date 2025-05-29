@@ -13,4 +13,6 @@ public interface MercanciaService {
     public List<MercanciaDTO> listarMercancia();
     public ResponseEntity<?> saveMercancia(MercanciaDTO mercanciaDTO);
     public ResponseEntity<?> delete(int idproducto, int usuarioregistro);
+    public ResponseEntity<?>update(MercanciaDTO mercanciaDTO);
+    public ResponseEntity<?> buscarById(long merchantId);
 }

@@ -16,13 +16,17 @@ public class MercanciaDTO implements Serializable {
     private Date fechaingreso;
     private int cantidad;
     private int usuarioregistro;
+    private String usuariomod;
+    private String fechamod;
 
-    public MercanciaDTO(int idproducto, String nombreproducto, Date fechaingreso, int cantidad, int usuarioregistro) {
+    public MercanciaDTO(int idproducto, String nombreproducto, Date fechaingreso, int cantidad, int usuarioregistro, String usuariomod, String fechamod) {
         this.idproducto = idproducto;
         this.nombreproducto = nombreproducto;
         this.fechaingreso = fechaingreso;
         this.cantidad = cantidad;
         this.usuarioregistro = usuarioregistro;
+        this.usuariomod = usuariomod;
+        this.fechamod = fechamod;
     }
 
     public int getIdproducto() {
@@ -63,5 +67,21 @@ public class MercanciaDTO implements Serializable {
 
     public void setUsuarioregistro(int usuarioregistro) {
         this.usuarioregistro = usuarioregistro;
+    }
+
+    public String getUsuariomod() {
+        return usuariomod;
+    }
+
+    public void setUsuariomod(String usuariomod) {
+        this.usuariomod = usuariomod;
+    }
+
+    public String getFechamod() {
+        return fechamod;
+    }
+
+    public void setFechamod(String fechamod) {
+        this.fechamod = fechamod;
     }
 }

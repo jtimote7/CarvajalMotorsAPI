@@ -2,7 +2,9 @@ package com.carvajal.CarvajalMotors.controller;
 
 import com.carvajal.CarvajalMotors.dto.MercanciaDTO;
 import com.carvajal.CarvajalMotors.dto.UsuarioDTO;
+import com.carvajal.CarvajalMotors.entities.CargoEntity;
 import com.carvajal.CarvajalMotors.entities.MercanciaEntity;
+import com.carvajal.CarvajalMotors.service.CargoService;
 import com.carvajal.CarvajalMotors.service.MercanciaService;
 import com.carvajal.CarvajalMotors.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class UserRestController {
     private UsuarioService usuarioService;
     @Autowired
     private MercanciaService mercanciaService;
+    @Autowired
+    private CargoService cargoService;
 
     @PostMapping("/saveUser")
     public ResponseEntity<?> saveUsuario(@RequestBody UsuarioDTO user){
@@ -45,5 +49,25 @@ public class UserRestController {
     @GetMapping("/merchants")
     public List<MercanciaDTO> getMerchants(){
         return mercanciaService.listarMercancia();
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody MercanciaDTO mercanciaDTO){
+        return mercanciaService.update(mercanciaDTO);
+    }
+
+    @GetMapping("/buscarById")
+    public ResponseEntity<?> buscarById(@RequestParam("id") long id){
+        return mercanciaService.buscarById(id);
+    }
+
+    @PostMapping("/savecargo")
+    public ResponseEntity<?> saveCargo(@RequestBody CargoEntity cargo){
+        return cargoService.saveCargo(cargo);
+    }
+
+    @GetMapping("/cargos")
+    public List<CargoEntity> cargos(){
+        return cargoService.cargos();
     }
 }

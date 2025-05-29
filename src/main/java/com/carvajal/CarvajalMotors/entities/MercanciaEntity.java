@@ -10,53 +10,73 @@ public class MercanciaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idproducto")
-    private int IDProducto;
+    private int idproducto;
     @Column(name="nombreproducto")
-    private String NombreProducto;
+    private String nombreproducto;
     @Column(name="fechaingreso")
-    private Date FechaIngreso;
+    private Date fechaingreso;
     @Column(name="cantidad")
-    private int Cantidad;
+    private int cantidad;
     @Column(name="usuarioregistro")
-    private int usuarioRegistro;
+    private int usuarioregistro;
+    @Column(name="usuariomod")
+    private String usuariomod;
+    @Column(name="fechamod")
+    private String fechamod;
 
-    public int getIDProducto() {
-        return IDProducto;
+    public int getIdproducto() {
+        return idproducto;
     }
 
-    public void setIDProducto(int IDProducto) {
-        this.IDProducto = IDProducto;
+    public void setIdproducto(int idproducto) {
+        this.idproducto = idproducto;
     }
 
-    public String getNombreProducto() {
-        return NombreProducto;
+    public String getNombreproducto() {
+        return nombreproducto;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        NombreProducto = nombreProducto;
+    public void setNombreproducto(String nombreproducto) {
+        this.nombreproducto = nombreproducto;
     }
 
-    public Date getFechaIngreso() {
-        return FechaIngreso;
+    public Date getFechaingreso() {
+        return fechaingreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
-        FechaIngreso = fechaIngreso;
+    public void setFechaingreso(Date fechaingreso) {
+        this.fechaingreso = fechaingreso;
     }
 
     public int getCantidad() {
-        return Cantidad;
+        return cantidad;
     }
 
     public void setCantidad(int cantidad) {
-        Cantidad = cantidad;
+        this.cantidad = cantidad;
     }
 
-    public int getUsuarioRegistro() {
-        return usuarioRegistro;
+    public int getUsuarioregistro() {
+        return usuarioregistro;
     }
 
-    public void setUsuarioRegistro(int usuarioRegistro) {
-        this.usuarioRegistro = usuarioRegistro;
+    public void setUsuarioregistro(int usuarioregistro) {
+        this.usuarioregistro = usuarioregistro;
+    }
+
+    public String getUsuariomod() {
+        return usuariomod;
+    }
+
+    public void setUsuariomod(String usuariomod) {
+        this.usuariomod = usuariomod;
+    }
+
+    public String getFechamod() {
+        return fechamod;
+    }
+
+    public void setFechamod(String fechamod) {
+        this.fechamod = fechamod;
     }
 }

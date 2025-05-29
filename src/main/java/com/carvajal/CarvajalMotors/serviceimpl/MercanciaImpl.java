@@ -23,7 +23,7 @@ public class MercanciaImpl implements MercanciaService {
         return mercanciaDao.findAll()
                 .stream()
                 .map(merc ->{
-                    return new MercanciaDTO(merc.getIDProducto(),merc.getNombreProducto(), merc.getFechaIngreso(), merc.getCantidad(), merc.getUsuarioRegistro());
+                    return new MercanciaDTO(merc.getIdproducto(),merc.getNombreproducto(), merc.getFechaingreso(), merc.getCantidad(), merc.getUsuarioregistro(), merc.getUsuariomod(), merc.getFechamod());
                 }).collect(Collectors.toList());
     }
 
@@ -32,10 +32,12 @@ public class MercanciaImpl implements MercanciaService {
     public ResponseEntity<?> saveMercancia(MercanciaDTO mercanciaDTO) {
         MercanciaEntity mercanciaEntity= new MercanciaEntity();
         mercanciaEntity.setCantidad(mercanciaDTO.getCantidad());
-        mercanciaEntity.setFechaIngreso(mercanciaDTO.getFechaingreso());
-        mercanciaEntity.setIDProducto(0);
-        mercanciaEntity.setUsuarioRegistro(mercanciaDTO.getUsuarioregistro());
-        mercanciaEntity.setNombreProducto(mercanciaDTO.getNombreproducto());
+        mercanciaEntity.setFechaingreso(mercanciaDTO.getFechaingreso());
+        mercanciaEntity.setIdproducto(mercanciaDTO.getIdproducto());
+        mercanciaEntity.setUsuarioregistro(mercanciaDTO.getUsuarioregistro());
+        mercanciaEntity.setNombreproducto(mercanciaDTO.getNombreproducto());
+        mercanciaEntity.setFechamod(mercanciaDTO.getFechamod());
+        mercanciaEntity.setUsuariomod(mercanciaDTO.getUsuariomod());
 
         return new ResponseEntity<>(mercanciaDao.save(mercanciaEntity), HttpStatus.CREATED);
     }
@@ -43,11 +45,27 @@ public class MercanciaImpl implements MercanciaService {
     @Override
     @Transactional
     public ResponseEntity<?> delete(int idproducto, int usuarioregistro) {
-        int filasElminadas= mercanciaDao.deleteByIDProductoAndUsuarioRegistro(idproducto, usuarioregistro);
+        int filasElminadas= mercanciaDao.deleteByIdproductoAndUsuarioregistro(idproducto, usuarioregistro);
         if(filasElminadas > 0){
             return new ResponseEntity<>("Eliminado", HttpStatus.OK);
         }else {
             return new ResponseEntity<>("No eliminado", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @Override
+    public ResponseEntity<?> update(MercanciaDTO mercanciaDTO) {
+        MercanciaEntity mercanciaEntity= new MercanciaEntity();
+        mercanciaEntity.setCantidad(mercanciaDTO.getCantidad());
+        mercanciaEntity.setFechaingreso(mercanciaDTO.getFechaingreso());
+        mercanciaEntity.setIdproducto(mercanciaDTO.getIdproducto());
+        mercanciaEntity.setUsuarioregistro(mercanciaDTO.getUsuarioregistro());
+        mercanciaEntity.setNombreproducto(mercanciaDTO.getNombreproducto());
+        return new ResponseEntity<>(mercanciaDao.save(mercanciaEntity),HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> buscarById(long merchantId) {
+        return new ResponseEntity<>(mercanciaDao.findById(merchantId), HttpStatus.OK);
     }
 }

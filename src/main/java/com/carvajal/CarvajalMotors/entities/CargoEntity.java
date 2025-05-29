@@ -2,29 +2,31 @@ package com.carvajal.CarvajalMotors.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
-@Table(name="cargotbl")
-public class CargoEntity {
+@Table(name="Cargotbl")
+public class CargoEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idcargo")
-    private int IDCargo;
+    private int idcargo;
     @Column(name="nombrecargo")
-    private String NombreCargo;
+    private String nombrecargo;
 
-    public int getIDCargo() {
-        return IDCargo;
+    public int getIdcargo() {
+        return idcargo;
     }
 
-    public void setIDCargo(int IDCargo) {
-        this.IDCargo = IDCargo;
+    public void setIdcargo(int idcargo) {
+        this.idcargo = idcargo;
     }
 
     public String getNombreCargo() {
-        return NombreCargo;
+        return nombrecargo;
     }
 
     public void setNombreCargo(String nombreCargo) {
-        NombreCargo = nombreCargo;
+        this.nombrecargo = nombreCargo;
     }
 }

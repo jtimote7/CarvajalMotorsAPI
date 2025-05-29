@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IMercanciaDao extends JpaRepository<MercanciaEntity, Long> {
-    public int deleteByIDProductoAndUsuarioRegistro(int id, int usuarioRegistro);
+    public int deleteByIdproductoAndUsuarioregistro(int id, int usuarioRegistro);
 }
